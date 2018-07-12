@@ -85,6 +85,9 @@ define bsd::network::interface (
       file { "/etc/hostname.${if_name}":
         ensure  => $file_ensure,
         content => $text,
+        owner   => 'root',
+        group   => 'wheel',
+        mode    => '0640',
         notify  => Bsd_interface[$if_name],
       }
 
